@@ -2,6 +2,7 @@ import React from 'react';
 import { Counter } from './features/Counter';
 import './App.css';
 import Sidebar from './Components/Sidebar';
+import Chat from './Components/Chat';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
     <div className="app">
      <div className="app__body">
        <Sidebar />
-       {/* Chat */}
+       <Chat />
      </div>
     </div>
   );
