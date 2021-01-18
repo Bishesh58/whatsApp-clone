@@ -1,11 +1,16 @@
 import React from 'react';
 import { Counter } from './features/Counter';
 import './App.css';
+import Sidebar from './Components/Sidebar';
 
 function App() {
   return (
-    <div className="App">
-     <h1>Hello world! Let's build whatsApp clone...</h1>
+    //BEM naming
+    <div className="app">
+     <div className="app__body">
+       <Sidebar />
+       {/* Chat */}
+     </div>
     </div>
   );
 }
