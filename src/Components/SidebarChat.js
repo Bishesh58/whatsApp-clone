@@ -2,7 +2,7 @@ import { Avatar } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import './SidebarChat.css';
 
-function SidebarChat({ addNewChat }) {
+function SidebarChat({ addNewChat, id, name }) {
 
     const [seed, setSeed] = useState(" ");
 
@@ -22,7 +22,7 @@ function SidebarChat({ addNewChat }) {
             
             />
             <div className="sidebarChat__info">
-                <h2>Room Name</h2>
+                <h2>{name}</h2>
                 <p>Last message...</p>
             </div>
         </div>
