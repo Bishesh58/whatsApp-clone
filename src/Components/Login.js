@@ -3,13 +3,21 @@ import React from 'react';
 import './Login.css';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import { auth, provider } from "../Firebase/firebase";
+import { useDispatch } from 'react-redux';
+import { login } from './features/userSlice';
 
 function Login() {
+
+    const dispatch = useDispatch();
 
     const signIn =()=> {
         auth.signInWithPopup(provider)
         .then(result =>(
-            console.log(result.user.displayName, result.user.photoURL )
+            //passing the user from result we get to reducer 
+            dispatch(login({
+                user: result.user.user,
+            }))
+           // console.log(result.user.displayName, result.user.photoURL )
         ))
         .catch(error => alert(error.message));
     }

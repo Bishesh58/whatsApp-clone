@@ -7,11 +7,19 @@ import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { SearchOutlined } from '@material-ui/icons';
 import SidebarChat from './SidebarChat';
-import db from '../Firebase/firebase';
+import db, { auth } from '../Firebase/firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser } from './features/userSlice';
+
 
 function Sidebar() {
 
     const [rooms, setrooms] = useState([])
+    //for signout
+    const dispatch = useDispatch()
+
+    //pull the user from store
+    const user = useSelector(selectUser)
 
     useEffect(() => {
 
@@ -28,10 +36,17 @@ function Sidebar() {
        }
     }, [])
 
+    const signOut =()=>{
+        dispatch(logout())
+        auth.signOut();
+    }
     return (
         <div className='sidebar'>
             <div className="sidebar__header">
-                <Avatar />
+                <Avatar 
+                onClick={signOut}
+                src={user.photoUrl}/>
+                <p>{user.user}</p>
                 <div className="sidebar__headerRight">
                     <IconButton>
                         <DonutLargeIcon />
