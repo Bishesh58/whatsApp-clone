@@ -12,9 +12,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectUser } from './features/userSlice';
 
 
+
 function Sidebar() {
 
     const [rooms, setrooms] = useState([])
+    
     //for signout
     const dispatch = useDispatch()
 
@@ -44,6 +46,7 @@ function Sidebar() {
         <div className='sidebar'>
             <div className="sidebar__header">
                 <Avatar 
+                className="sidebar__headerUser"
                 onClick={signOut}
                 src={user.photoUrl}/>
                 <p>{user.user}</p>
