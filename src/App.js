@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Counter } from './features/Counter';
 import './App.css';
 import Sidebar from './Components/Sidebar';
 import Chat from './Components/Chat';

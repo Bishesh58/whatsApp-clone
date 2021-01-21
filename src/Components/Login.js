@@ -9,7 +9,7 @@ function Login() {
     const signIn =()=> {
         auth.signInWithPopup(provider)
         .then(result =>(
-            console.log(result)
+            console.log(result.user.displayName, result.user.photoURL )
         ))
         .catch(error => alert(error.message));
     }
