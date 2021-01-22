@@ -49,7 +49,6 @@ function Sidebar() {
                 className="sidebar__headerUser"
                 onClick={signOut}
                 src={user.photoUrl}/>
-                <p>{user.user}</p>
                 <div className="sidebar__headerRight">
                     <IconButton>
                         <DonutLargeIcon />

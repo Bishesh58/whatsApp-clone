@@ -52,7 +52,9 @@ function Chat() {
         e.preventDefault();
         console.log("You have typed", input)
         setInput("");
-
+        if (emojiPickerState){
+            setEmojiPicker(!emojiPickerState);
+        }
         db.collection("rooms")
         .doc(roomId)
         .collection("messages").add({
