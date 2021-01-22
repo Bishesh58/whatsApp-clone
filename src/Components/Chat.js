@@ -11,6 +11,8 @@ import db from '../Firebase/firebase';
 import { selectUser, userSlice } from './features/userSlice';
 import { useSelector } from 'react-redux';
 import firebase from 'firebase';
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
 
 function Chat() {
 
@@ -22,7 +24,8 @@ function Chat() {
 
     //pull the user to from slice to add messages to db
     const user = useSelector(selectUser)
-    
+
+   
 
     useEffect(() => {
        if(roomId){
@@ -59,7 +62,24 @@ function Chat() {
         })
     }
 
+    //emojis
+    const [emojiPickerState, setEmojiPicker] = useState(false);
+    
+    let emojiPicker;
+    if (emojiPickerState) {
+        emojiPicker = (
+        <Picker
+            onSelect={emoji => setInput(input + " "+ emoji.native)}
+            style={{ position: 'absolute', bottom: '61px'}}
+            title=""
+        />
+        );
+    }
 
+    const chooseEmoji =(e)=>{
+        e.preventDefault();
+        setEmojiPicker(!emojiPickerState);
+    }
 
     return (
         <div className='chat'>
@@ -102,7 +122,11 @@ function Chat() {
                
             </div>
             <div className="chat__footer">
-                <InsertEmoticonIcon />
+                {emojiPicker}
+                <InsertEmoticonIcon 
+                onClick={chooseEmoji}
+                />
+                
                 <form>
                     <input 
                     value={input} 

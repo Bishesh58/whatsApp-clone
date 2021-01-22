@@ -68,6 +68,7 @@
 }
 
 .chat__footer {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
